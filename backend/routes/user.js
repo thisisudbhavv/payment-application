@@ -90,7 +90,7 @@ router.post("/signin", async (req, res) => {
   });
 });
 
-router.put("/update", async (req, res) => {
+router.put("/update", authMiddleware, async (req, res) => {
   const body = req.body;
   const { success } = updateSchema.safeParse(body);
   if (!success) {
