@@ -1,3 +1,3 @@
-## Payment application
+# Payment application
 
-# Basic version of PayTM
+## Basic version of PayTM
