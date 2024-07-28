@@ -3,7 +3,7 @@ const zod = require("zod");
 const router = express.Router();
 const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
-const JWT_SCERET = require("../config");
+const { JWT_SCERET } = require("../config");
 const { authMiddleware } = require("../middleware");
 
 const signupSchema = zod.object({
@@ -15,7 +15,7 @@ const signupSchema = zod.object({
 
 const signinSchema = zod.object({
   username: zod.string().email(),
-  password: zod.string,
+  password: zod.string(),
 });
 
 const updateSchema = zod.object({
@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
 
   if (user._id) {
     return res.status(411).json({
-      msg: "Email already taken/ Icorrect inputs",
+      msg: "Email already taken/ Incorrect inputs",
     });
   }
 

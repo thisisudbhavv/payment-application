@@ -1,5 +1,5 @@
 const express = require("express");
-const Account = require("../db");
+const { Account } = require("../db");
 const { authMiddleware } = require("../middleware");
 const mongoose = require("mongoose");
 const router = express.Router();
@@ -36,7 +36,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     userId: to,
   }).session(session);
 
-  if (!account) {
+  if (!toAccount) {
     await session.abortTransaction();
     return res.status(400).json({
       msg: "Invalid account",
