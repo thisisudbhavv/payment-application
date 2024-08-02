@@ -13,15 +13,19 @@ export function Signup() {
           <SubHeading label="Enter your information to create your account" />
           <InputBox label="First Name" placeholder="John" />
           <InputBox label="Last Name" placeholder="Doe" />
-          <InputBox label="Email" placeholder="johndoe@gmail.com" />
-          <InputBox label="Password" placeholder="*******" />
+          <InputBox
+            label="Email"
+            placeholder="johndoe@gmail.com"
+            type="email"
+          />
+          <InputBox label="Password" placeholder="*******" type="password" />
           <div className="pt-4">
             <Button label="Sign Up" />
           </div>
           <BottomWarning
             label="Already have an account?"
             buttonText="Sign In"
-            to="/signin"
+            to="/"
           />
         </div>
       </div>

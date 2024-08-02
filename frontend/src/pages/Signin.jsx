@@ -11,8 +11,16 @@ export function Signin() {
         <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
           <Heading label="Sign In" />
           <SubHeading label="Enter your credentials to access your account" />
-          <InputBox label="Email" placeholder="johndoe@gmail.com" />
-          <InputBox label="Password" placeholder={"**********"} />
+          <InputBox
+            label="Email"
+            placeholder="johndoe@gmail.com"
+            type="email"
+          />
+          <InputBox
+            label="Password"
+            placeholder={"**********"}
+            type="password"
+          />
           <div className="pt-4">
             <Button label="Sign In" />
           </div>
