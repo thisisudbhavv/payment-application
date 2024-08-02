@@ -1,3 +1,9 @@
+import { Appbar } from "../components/Appbar";
+
 export function Dashboard() {
-  return <div>Dash</div>;
+  return (
+    <div>
+      <Appbar />
+    </div>
+  );
 }
