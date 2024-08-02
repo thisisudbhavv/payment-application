@@ -1,3 +1,11 @@
+import { Send } from "../components/Send";
+import { Appbar } from "../components/Appbar";
+
 export function SendMoney() {
-  return <div>Send</div>;
+  return (
+    <div>
+      {/* <Appbar /> */}
+      <Send />
+    </div>
+  );
 }
