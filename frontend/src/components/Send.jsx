@@ -7,6 +7,7 @@ export const Send = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const name = searchParams.get("name");
+  const [success, setSuccess] = useState("");
 
   return (
     <div class="flex justify-center h-screen bg-gray-100">
@@ -42,24 +43,37 @@ export const Send = () => {
               </div>
               <button
                 onClick={() => {
-                  axios.post(
-                    "https://payment-application-88r5.onrender.com/api/v1/account/transfer",
-                    {
-                      to: id,
-                      amount,
-                    },
-                    {
-                      headers: {
-                        Authorization:
-                          "Bearer " + localStorage.getItem("token"),
+                  axios
+                    .post(
+                      "https://payment-application-88r5.onrender.com/api/v1/account/transfer",
+                      {
+                        to: id,
+                        amount,
                       },
-                    }
-                  );
+                      {
+                        headers: {
+                          Authorization:
+                            "Bearer " + localStorage.getItem("token"),
+                        },
+                      }
+                    )
+                    .then((response) => {
+                      if (response.status == 200) {
+                        setSuccess("Transfer Successful");
+                      }
+                    })
+                    .catch((e) => {
+                      setSuccess(response.data.msg);
+                      console.log(e);
+                    });
                 }}
                 class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white"
               >
                 Initiate Transfer
               </button>
+              {success && (
+                <div className="mt-4 text-center text-green-500">{success}</div>
+              )}
             </div>
           </div>
         </div>
