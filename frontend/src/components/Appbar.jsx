@@ -1,6 +1,6 @@
 export function Appbar() {
   return (
-    <div className="flex flex-row justify-between px-8 py-5 border-b-2">
+    <div className="flex flex-row justify-between px-8 py-5 border-b-2 top-0 sticky">
       <div className="font-bold text-2xl">Payment App</div>
       <div className="flex flex-row justify-between">
         <div className="relative inline-flex items-center justify-center font-medium pr-4">
