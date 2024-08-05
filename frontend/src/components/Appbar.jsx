@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Appbar() {
   const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -12,9 +14,13 @@ export function Appbar() {
         },
       })
       .then((response) => {
-        setBalance(response.data.firstName);
+        setUser(response.data.account.firstName);
       });
   }, []);
+
+  const redirectToUser = () => {
+    navigate("/user");
+  };
 
   return (
     <div className="flex flex-row justify-between px-8 py-5 border-b-2 top-0 sticky">
@@ -24,7 +30,7 @@ export function Appbar() {
           Hello, {user}
         </div>
         <div class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-slate-200 rounded-full">
-          <span>U</span>
+          <span onClick={redirectToUser}>{user[0]}</span>
         </div>
       </div>
     </div>
