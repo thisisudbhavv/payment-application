@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./Button";
+import axios from "axios";
 
 export function Users() {
-  const [users, setUsers] = useState([
-    {
-      firstName: "Udbhav",
-      lastName: "Patel",
-      _id: 1,
-    },
-    {
-      firstName: "Harkirat",
-      lastName: "Singh",
-      _id: 2,
-    },
-  ]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://payment-application-88r5.onrender.com/api/v1/user/bulk")
+      .then((response) => {
+        setUsers(response.data.user);
+      });
+  }, []);
 
   return (
     <div>

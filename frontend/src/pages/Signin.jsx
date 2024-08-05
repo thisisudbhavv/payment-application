@@ -3,8 +3,13 @@ import { SubHeading } from "../components/SubHeading";
 import { InputBox } from "../components/InputBox";
 import { Button } from "../components/Button";
 import { BottomWarning } from "../components/BottomWarning";
+import { useState } from "react";
+import axios from "axios";
 
 export function Signin() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="bg-slate-200 h-screen flex justify-center">
       <div className="flex flex-col justify-center">
@@ -14,15 +19,32 @@ export function Signin() {
           <InputBox
             label="Email"
             placeholder="johndoe@gmail.com"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
             type="email"
           />
           <InputBox
             label="Password"
             placeholder={"**********"}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             type="password"
           />
           <div className="pt-4">
-            <Button label="Sign In" />
+            <Button
+              onClick={() => {
+                axios.post(
+                  "https://payment-application-88r5.onrender.com/api/v1/user/signin",
+                  {
+                    username,
+                    password,
+                  }
+                );
+              }}
+              label="Sign In"
+            />
           </div>
           <BottomWarning
             label="Don't have a account?"
