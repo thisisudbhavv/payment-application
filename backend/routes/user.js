@@ -115,7 +115,7 @@ router.put("/update", authMiddleware, async (req, res) => {
   });
 });
 
-router.get("/bulk", async (req, res) => {
+router.get("/bulk", authMiddleware, async (req, res) => {
   const filter = req.query.filter || "";
   const users = await User.find({
     $or: [
@@ -131,6 +131,12 @@ router.get("/bulk", async (req, res) => {
       },
     ],
   });
+
+  const userId = req.userId;
+  const userIndex = users.findIndex((user) => user._id == userId);
+  if (userIndex !== -1) {
+    const [me] = users.splice(userIndex, 1);
+  }
 
   res.json({
     user: users.map((user) => ({
