@@ -15,6 +15,23 @@ router.get("/balance", authMiddleware, async (req, res) => {
   });
 });
 
+router.post("/addBalance", authMiddleware, async (req, res) => {
+  const amount = req.body.amount;
+  await Account.updateOne(
+    {
+      userId: req.userId,
+    },
+    {
+      $inc: {
+        balance: amount,
+      },
+    }
+  );
+  res.status(200).json({
+    msg: "Amount Added",
+  });
+});
+
 router.post("/transfer", authMiddleware, async (req, res) => {
   const session = await mongoose.startSession();
 

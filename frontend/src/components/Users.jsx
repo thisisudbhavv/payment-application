@@ -11,7 +11,12 @@ export function Users() {
     axios
       .get(
         "https://payment-application-88r5.onrender.com/api/v1/user/bulk?filter=" +
-          filter
+          filter,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
       )
       .then((response) => {
         setUsers(response.data.user);
