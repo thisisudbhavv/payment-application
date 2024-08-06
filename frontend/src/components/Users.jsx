@@ -25,15 +25,17 @@ export function Users() {
 
   return (
     <div>
-      <div className="text-2xl font-bold text-left pt-5 pb-3">Users</div>
-      <div className="my-2">
-        <input
-          onChange={(e) => {
-            setFilter(e.target.value);
-          }}
-          placeholder="Search Users....."
-          className="w-full px-2 py-1 border rounded border-slate-300"
-        />
+      <div className="top-48 sticky bg-white">
+        <div className="text-2xl font-bold text-left pt-5 pb-3">Users</div>
+        <div className="my-2 pb-2">
+          <input
+            onChange={(e) => {
+              setFilter(e.target.value);
+            }}
+            placeholder="Search Users....."
+            className="w-full px-2 py-1 border rounded border-slate-300"
+          />
+        </div>
       </div>
       <div>
         {users.map((user) => (

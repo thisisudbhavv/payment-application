@@ -7,7 +7,7 @@ export function Balance({ value }) {
     navigate("/add");
   };
   return (
-    <div>
+    <div className="top-20 sticky bg-white">
       <div className="flex flex-row pt-5">
         <div className=" text-xl font-bold text-gray-800 pr-3">
           Your Balance
