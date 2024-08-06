@@ -24,7 +24,7 @@ export function Appbar() {
   };
 
   return (
-    <div className="flex flex-row justify-between px-8 py-2 border-b-2 top-0 sticky">
+    <div className="flex flex-row justify-between px-8 py-2 border-b-2 top-0 sticky bg-white">
       <div className="font-bold text-2xl relative inline-flex items-center">
         Payment App
       </div>
